@@ -1,16 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Provider } from 'react-redux';
+import { store } from './store';
+
+// Screens
+import AssetsScreen from './src/screens/Assets';
 
 const Tab = createBottomTabNavigator();
 
-const AssetsScreen = () => {
-  return (
-    <View style={styles.screen}>
-      <Text style={styles.text}>Assets Screen</Text>
-    </View>
-  );
-};
+
 
 const NewsScreen = () => {
   return (
@@ -22,10 +21,12 @@ const NewsScreen = () => {
 
 export default function App() {
   return (
+    <Provider store={store}>
       <Tab.Navigator>
         <Tab.Screen name="Assets" component={AssetsScreen} />
         <Tab.Screen name="News" component={NewsScreen} />
       </Tab.Navigator>
+    </Provider>
   );
 }
 
